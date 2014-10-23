@@ -1,6 +1,7 @@
 'use strict';
 angular.module('app')
-    .controller('MainCtrl', function ($scope, ngAudio, $interval, Player) {
+    .controller('MainCtrl', function ($scope, $interval, Player) {
+        $scope.test = 123;
         var TICK = 1000,
             player = $scope.player = new Player();
 
@@ -47,6 +48,7 @@ angular.module('app')
         $scope.win = function() {
             $scope.isWin = true;
         }
+
         /*
         function startTrack() {
             player.time = player.time || player.track.DurationSecs;

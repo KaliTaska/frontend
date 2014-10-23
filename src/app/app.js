@@ -1,19 +1,19 @@
 'use strict';
 
-angular.module('app', ['ngAudio', 'ngSanitize', 'ngResource', 'ui.router', 'angularMoment', 'timer', 'angular-chrono'])
-  .config(function ($stateProvider, $urlRouterProvider) {
-    $stateProvider
-      .state('home', {
-        url: '/',
+angular.module('app', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ngRoute'])
+  .config(function ($routeProvider) {
+    $routeProvider
+      .when('/', {
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl'
+      })
+      .otherwise({
+        redirectTo: '/'
       });
-
-    $urlRouterProvider.otherwise('/');
   })
 ;
 
-'use strict';
+
 
 angular.module('app')
     .directive('timeFormat', function ($compile) {
@@ -96,177 +96,177 @@ angular.module('app')
     });
 'use strict';
 
-angular.module('app')
-    .controller('MainCtrl', function ($scope, ngAudio, $interval, Player) {
-        var TICK = 1000,
-            player = $scope.player = new Player();
+// angular.module('app')
+//     .controller('MainCtrl', function ($scope, ngAudio, $interval, Player) {
+//         var TICK = 1000,
+//             player = $scope.player = new Player();
 
-        angular.extend(
-            $scope,
-            {
-                STATE: '',
-                DEFAULT: 'DEFAULT',
-                PREVIEW: 'PREVIEW',
-                showDesc: function(track) {
-                    $scope.selectedTrack = track;
-                },
-                next: function() {
-                    player.nextTrack();
-                    player.startTrack();
-                },
-                prev: function() {
-                    player.prevTrack();
-                    player.startTrack();
-                },
-                play: function() {
-                    player.startTrack();
-                },
-                stop: function() {
-                    player.stopTrack();
-                },
-                selectTrack: function(track) {
-                    if ($scope.selectedTrack && $scope.selectedTrack == track) {
-                        $scope.selectedTrack = undefined;
-                    }
-                    else {
-                        $scope.selectedTrack = track;
-                    }
-                }
-            }
-        );
+//         angular.extend(
+//             $scope,
+//             {
+//                 STATE: '',
+//                 DEFAULT: 'DEFAULT',
+//                 PREVIEW: 'PREVIEW',
+//                 showDesc: function(track) {
+//                     $scope.selectedTrack = track;
+//                 },
+//                 next: function() {
+//                     player.nextTrack();
+//                     player.startTrack();
+//                 },
+//                 prev: function() {
+//                     player.prevTrack();
+//                     player.startTrack();
+//                 },
+//                 play: function() {
+//                     player.startTrack();
+//                 },
+//                 stop: function() {
+//                     player.stopTrack();
+//                 },
+//                 selectTrack: function(track) {
+//                     if ($scope.selectedTrack && $scope.selectedTrack == track) {
+//                         $scope.selectedTrack = undefined;
+//                     }
+//                     else {
+//                         $scope.selectedTrack = track;
+//                     }
+//                 }
+//             }
+//         );
 
-        function init() {
-            $scope.STATE = $scope.DEFAULT;
-            $scope.playlist = player.playlist;
+//         function init() {
+//             $scope.STATE = $scope.DEFAULT;
+//             $scope.playlist = player.playlist;
 
-        }
+//         }
 
-        $scope.win = function() {
-            $scope.isWin = true;
-        }
-        /*
-        function startTrack() {
-            player.time = player.time || player.track.DurationSecs;
-
-
-            stop = $interval(tick,
-                TICK / 100,
-                Math.round(player.time / 1000)
-            );
-            stop.then(onStopTime);
-        }
-
-        function onStopTime() {
-            if(playlist[index]) {
-                startTrack();
-            }
-        }
-
-        function changeTrack() {
-            stopTrack();
-            player.track = playlist[index++];
-        }
-
-        function tick() {
-            player.percent = 100 - player.time / player.track.DurationSecs * 100;
-            player.time -= TICK;
-        }
+//         $scope.win = function() {
+//             $scope.isWin = true;
+//         }
+//         /*
+//         function startTrack() {
+//             player.time = player.time || player.track.DurationSecs;
 
 
-        function stopTrack() {
-            $interval.cancel(stop);
-            player.state = false;
-        }
-        */
+//             stop = $interval(tick,
+//                 TICK / 100,
+//                 Math.round(player.time / 1000)
+//             );
+//             stop.then(onStopTime);
+//         }
 
-        init();
-    });
+//         function onStopTime() {
+//             if(playlist[index]) {
+//                 startTrack();
+//             }
+//         }
 
-'use strict';
+//         function changeTrack() {
+//             stopTrack();
+//             player.track = playlist[index++];
+//         }
 
-angular.module('app')
-    .factory('Player', function($interval, ngAudio) {
-        var TICK = 1000;
-        function Player() {
+//         function tick() {
+//             player.percent = 100 - player.time / player.track.DurationSecs * 100;
+//             player.time -= TICK;
+//         }
 
-            this.playlist = [
-                {"Tasks":[],"Id":2,"Name":"Rule the world","Descrition":"Wann rule u all, sux0rz!","Start":"\/Date(1412996660960)\/","DurationSecs":1500000,"HasChildren":false},
-                {"Tasks":[],"Id":2,"Name":"Rule other world","Descrition":"Wann rule u all!!, sux0rz!","Start":"\/Date(1412996660960)\/","DurationSecs":1500000 * 2,"HasChildren":false},
-                {"Tasks":[],"Id":2,"Name":"Rule the world","Descrition":"Wann rule u all, sux0rz!","Start":"\/Date(1412996660960)\/","DurationSecs":1500000,"HasChildren":false},
-                {"Tasks":[],"Id":2,"Name":"Rule the world","Descrition":"Wann rule u all, sux0rz!","Start":"\/Date(1412996660960)\/","DurationSecs":1500000,"HasChildren":false},
-                {"Tasks":[],"Id":2,"Name":"Rule the world","Descrition":"Wann rule u all, sux0rz!","Start":"\/Date(1412996660960)\/","DurationSecs":1500000,"HasChildren":false},
-                {"Tasks":[],"Id":2,"Name":"Rule the world","Descrition":"Wann rule u all, sux0rz!","Start":"\/Date(1412996660960)\/","DurationSecs":1500000,"HasChildren":false},
-                {"Tasks":[],"Id":2,"Name":"Rule the world","Descrition":"Wann rule u all, sux0rz!","Start":"\/Date(1412996660960)\/","DurationSecs":1500000,"HasChildren":false},
-                {"Tasks":[],"Id":2,"Name":"Rule the world","Descrition":"Wann rule u all, sux0rz!","Start":"\/Date(1412996660960)\/","DurationSecs":150000,"HasChildren":false},
-                {"Tasks":[],"Id":2,"Name":"Rule the world","Descrition":"Wann rule u all, sux0rz!","Start":"\/Date(1412996660960)\/","DurationSecs":150000,"HasChildren":false},
-            ];
 
-            this.playlist = [
-                {"Tasks":[],"Id":1,"Name":"Be cool!","Description":"Rule it!","Start":"2014-10-11T14:58:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":false},{"Tasks":[{"Tasks":[],"Id":3,"Name":"Introduction","Description":"Intrdouctions. Short review of the concept.","Start":"2014-10-11T14:58:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":false},{"Tasks":[],"Id":4,"Name":"Say something awesome","Description":"Now say something cool to own them!","Start":"2014-10-11T15:00:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":true,"HasChildren":false},{"Tasks":[],"Id":5,"Name":"Be cool!","Description":"Just Do It!","Start":"2014-10-11T15:03:26.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":false}],"Id":2,"Name":"Start Presentation","Description":"Start Presentation on Kalitaska software","Start":"2014-10-11T14:58:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":true},{"Tasks":[],"Id":3,"Name":"Introduction","Description":"Intrdouctions. Short review of the concept.","Start":"2014-10-11T14:58:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":false},{"Tasks":[],"Id":4,"Name":"Say something awesome","Description":"Now say something cool to own them!","Start":"2014-10-11T15:00:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":true,"HasChildren":false},
-                {"Tasks":[],"Id":5,"Name":"Rule the world","Description":"Just Do It!","Start":"2014-10-11T15:03:26.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":false}];
-        }
-        angular.extend(Player.prototype, {
-            index: -1,
-            playlist: [],
-            time: 0,
-            stop: false,
-            isPlaying: false,
-            percent: 0,
-            startTrack: function() {
-                if(! this.isPlaying) {
+//         function stopTrack() {
+//             $interval.cancel(stop);
+//             player.state = false;
+//         }
+//         */
 
-                    var self = this;
+//         init();
+//     });
 
-                    if (! self.track) {
-                        self.nextTrack();
-                    }
+// 'use strict';
 
-                    self.time = self.time || self.track.DurationSecs;
+// angular.module('app')
+//     .factory('Player', function($interval, ngAudio) {
+//         var TICK = 1000;
+//         function Player() {
 
-                    self.stop = $interval(function() {
-                            self.onTick();
-                        },
-                            TICK / 10,
-                        Math.round(self.time / 1000)
-                    );
+//             this.playlist = [
+//                 {"Tasks":[],"Id":2,"Name":"Rule the world","Descrition":"Wann rule u all, sux0rz!","Start":"\/Date(1412996660960)\/","DurationSecs":1500000,"HasChildren":false},
+//                 {"Tasks":[],"Id":2,"Name":"Rule other world","Descrition":"Wann rule u all!!, sux0rz!","Start":"\/Date(1412996660960)\/","DurationSecs":1500000 * 2,"HasChildren":false},
+//                 {"Tasks":[],"Id":2,"Name":"Rule the world","Descrition":"Wann rule u all, sux0rz!","Start":"\/Date(1412996660960)\/","DurationSecs":1500000,"HasChildren":false},
+//                 {"Tasks":[],"Id":2,"Name":"Rule the world","Descrition":"Wann rule u all, sux0rz!","Start":"\/Date(1412996660960)\/","DurationSecs":1500000,"HasChildren":false},
+//                 {"Tasks":[],"Id":2,"Name":"Rule the world","Descrition":"Wann rule u all, sux0rz!","Start":"\/Date(1412996660960)\/","DurationSecs":1500000,"HasChildren":false},
+//                 {"Tasks":[],"Id":2,"Name":"Rule the world","Descrition":"Wann rule u all, sux0rz!","Start":"\/Date(1412996660960)\/","DurationSecs":1500000,"HasChildren":false},
+//                 {"Tasks":[],"Id":2,"Name":"Rule the world","Descrition":"Wann rule u all, sux0rz!","Start":"\/Date(1412996660960)\/","DurationSecs":1500000,"HasChildren":false},
+//                 {"Tasks":[],"Id":2,"Name":"Rule the world","Descrition":"Wann rule u all, sux0rz!","Start":"\/Date(1412996660960)\/","DurationSecs":150000,"HasChildren":false},
+//                 {"Tasks":[],"Id":2,"Name":"Rule the world","Descrition":"Wann rule u all, sux0rz!","Start":"\/Date(1412996660960)\/","DurationSecs":150000,"HasChildren":false},
+//             ];
 
-                    self.stop.then(function() {
-                        var sound = ngAudio.play("assets/Demo.mp3");
-                        self.nextTrack();
-                        self.startTrack();
-                    });
+//             this.playlist = [
+//                 {"Tasks":[],"Id":1,"Name":"Be cool!","Description":"Rule it!","Start":"2014-10-11T14:58:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":false},{"Tasks":[{"Tasks":[],"Id":3,"Name":"Introduction","Description":"Intrdouctions. Short review of the concept.","Start":"2014-10-11T14:58:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":false},{"Tasks":[],"Id":4,"Name":"Say something awesome","Description":"Now say something cool to own them!","Start":"2014-10-11T15:00:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":true,"HasChildren":false},{"Tasks":[],"Id":5,"Name":"Be cool!","Description":"Just Do It!","Start":"2014-10-11T15:03:26.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":false}],"Id":2,"Name":"Start Presentation","Description":"Start Presentation on Kalitaska software","Start":"2014-10-11T14:58:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":true},{"Tasks":[],"Id":3,"Name":"Introduction","Description":"Intrdouctions. Short review of the concept.","Start":"2014-10-11T14:58:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":false},{"Tasks":[],"Id":4,"Name":"Say something awesome","Description":"Now say something cool to own them!","Start":"2014-10-11T15:00:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":true,"HasChildren":false},
+//                 {"Tasks":[],"Id":5,"Name":"Rule the world","Description":"Just Do It!","Start":"2014-10-11T15:03:26.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":false}];
+//         }
+//         angular.extend(Player.prototype, {
+//             index: -1,
+//             playlist: [],
+//             time: 0,
+//             stop: false,
+//             isPlaying: false,
+//             percent: 0,
+//             startTrack: function() {
+//                 if(! this.isPlaying) {
 
-                    self.isPlaying = true;
-                }
+//                     var self = this;
 
-            },
-            onTick: function() {
-                this.percent = 100 - this.time / this.track.DurationSecs * 100;
-                this.time -= TICK;
-            },
-            stopTrack: function() {
-                if (this.isPlaying) {
+//                     if (! self.track) {
+//                         self.nextTrack();
+//                     }
 
-                    $interval.cancel(this.stop);
-                    this.isPlaying = false;
-                }
+//                     self.time = self.time || self.track.DurationSecs;
 
-            },
-            nextTrack: function() {
-                this.stopTrack();
-                if (this.playlist[this.index + 1]) {
-                    this.track = this.playlist[++this.index];
-                    this.time = this.track.DurationSecs;
-                }
-            },
-            prevTrack: function() {
-                this.stopTrack();
-                if (this.playlist[this.index - 1]) {
-                    this.track = this.playlist[--this.index];
-                    this.time = this.track.DurationSecs;
-                }
-            }
-        });
+//                     self.stop = $interval(function() {
+//                             self.onTick();
+//                         },
+//                             TICK / 10,
+//                         Math.round(self.time / 1000)
+//                     );
 
-        return Player;
-    });
+//                     self.stop.then(function() {
+//                         var sound = ngAudio.play("assets/Demo.mp3");
+//                         self.nextTrack();
+//                         self.startTrack();
+//                     });
+
+//                     self.isPlaying = true;
+//                 }
+
+//             },
+//             onTick: function() {
+//                 this.percent = 100 - this.time / this.track.DurationSecs * 100;
+//                 this.time -= TICK;
+//             },
+//             stopTrack: function() {
+//                 if (this.isPlaying) {
+
+//                     $interval.cancel(this.stop);
+//                     this.isPlaying = false;
+//                 }
+
+//             },
+//             nextTrack: function() {
+//                 this.stopTrack();
+//                 if (this.playlist[this.index + 1]) {
+//                     this.track = this.playlist[++this.index];
+//                     this.time = this.track.DurationSecs;
+//                 }
+//             },
+//             prevTrack: function() {
+//                 this.stopTrack();
+//                 if (this.playlist[this.index - 1]) {
+//                     this.track = this.playlist[--this.index];
+//                     this.time = this.track.DurationSecs;
+//                 }
+//             }
+//         });
+
+//         return Player;
+//     });
