@@ -51,7 +51,8 @@ angular.module('app')
 
                     self.stop.then(function() {
                         //var sound = ngAudio.play("assets/Demo.mp3");
-                        if (isAutoNext) {
+                        self.stopTrack();
+                        if (self.isAutoNext) {
                             self.nextTrack();
                             self.startTrack();
                         }
@@ -62,7 +63,9 @@ angular.module('app')
 
             },
             onTick: function() {
-                this.percent = 100 - this.time / this.track.DurationSecs * 100;
+                this.track.ElapsedSec = this.track.ElapsedSec || 0;
+                this.track.ElapsedSec += 1000;
+                this.percent =  Math.ceil(100 - this.time / this.track.DurationSecs * 100);
                 this.time -= TICK;
             },
             stopTrack: function() {
