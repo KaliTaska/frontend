@@ -11,14 +11,14 @@
                 </p>
             </div>
             <ul class="nav tracklist">
-                <li ng-class="{current: track == player.track, complite: track.IsComplite}" ng-repeat="track in playlist.Tasks">
+                <li ng-class="{current: track == player.track, complite: track.IsComplite}" ng-repeat="track in playlist">
                     <div class="clearfix">
                         <div class="info pull-left">
                             <h2>{{track.Name}}</h2>
                             <ul class="desc nav clearfix">
-                                <li class="pull-left">Звпланировано: <span time-format="track.DurationSecs">{{hours ? hours + 'ч ' : ''}}{{minutes ? minutes + 'м ' : ''}}{{sseconds ? sseconds + 'с' : ''}}</span></li>
-                                <li class="pull-left sep" ng-if="track.ElapsedSec">|</li>
-                                <li class="pull-left" ng-if="track.ElapsedSec">Потрачено: <span time-format="track.ElapsedSec">{{hours ? hours + 'ч ' : ''}}{{minutes ? minutes + 'м ' : ''}}{{sseconds ? sseconds + 'с' : ''}}</span></li>
+                                <li class="pull-left">Звпланировано: <span time-format="(track.EstimatedDurationSecs * 1000)">{{hours ? hours + 'ч ' : ''}}{{minutes ? minutes + 'м ' : ''}}{{sseconds ? sseconds + 'с' : ''}}</span></li>
+                                <li class="pull-left sep" ng-if="track.DurationSecs">|</li>
+                                <li class="pull-left" ng-if="track.DurationSecs">Потрачено: <span time-format="(track.DurationSecs * 1000)">{{hours ? hours + 'ч ' : ''}}{{minutes ? minutes + 'м ' : ''}}{{sseconds ? sseconds + 'с' : ''}}</span></li>
                             </ul>
                         </div>
                         <div class="actions pull-right">

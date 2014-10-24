@@ -39,8 +39,7 @@ angular.module('app')
 
         function init() {
             $scope.STATE = $scope.DEFAULT;
-            $scope.playlist = taskLists.taskLists[taskLists.current];
-
+            $scope.playlist = player.playlist = taskLists.taskLists[taskLists.current].Tasks;
         }
 
         init();
