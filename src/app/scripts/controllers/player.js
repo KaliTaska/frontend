@@ -1,10 +1,8 @@
 'use strict';
 
-
 angular.module('app')
     .controller('PlayerCtrl', function ($scope, $interval, Player) {
         var player = $scope.player = new Player();
-
         angular.extend(
             $scope,
             {
@@ -22,8 +20,8 @@ angular.module('app')
                     player.prevTrack();
                     player.startTrack();
                 },
-                play: function() {
-                    player.startTrack();
+                play: function(track) {
+                    player.startTrack(track);
                 },
                 stop: function() {
                     player.stopTrack();

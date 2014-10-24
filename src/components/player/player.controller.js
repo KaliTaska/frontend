@@ -1,5 +1,5 @@
 angular.module('app')
-.controller('PlayerCtrl', function ($scope, $interval, Player) {
+.controller('PlayerOldCtrl', function ($scope, $interval, Player) {
     $scope.test321 = 4321;
 
     var TICK = 1000,
