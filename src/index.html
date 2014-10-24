@@ -1,63 +1,78 @@
 <!doctype html>
 <html class="no-js" ng-app="app">
-  <head>
+<head>
     <meta charset="utf-8">
     <title>Kalitaska</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-      <!-- build:css({.tmp,app}) styles/vendor.css -->
-      <link rel="stylesheet" href="app/styles/vendor.css">
+    <!-- build:css({.tmp,app}) styles/vendor.css -->
+    <link rel="stylesheet" href="app/styles/vendor.css">
 
-      <!-- bower:css -->
-      <link rel="stylesheet" href="bower_components/sidr/stylesheets/jquery.sidr.dark.css" />
-      <!-- endbower -->
-      <!-- endbuild -->
-    <link rel="stylesheet" href="app/styles/main.css" />
-  <link rel="stylesheet" href="bower_components/angular-ui-tree/dist/angular-ui-tree.min.css" />
-  </head>
-  <body>
-      <!-- Fixed navbar -->
-      <div class="header navbar navbar-inverse" role="navigation">
-        <div class="container">
-         <a class="navbar-brand" href="#">KaliTaska</a>
-         <div class="profile">
-          <img src="/images/mocks/profile.png" />
-          <a href="#">Вадим Хейфец</a>
-        </div>
-      </div>
-	 </div> 
-    <div id="tracklist" class="hidden" ng-controller="SidebarCtrl" ng-include="'components/sidebar/sidebar.html'"></div>
-    <div class="content" ng-controller="PlayerCtrl" ng-include="'app/main/main.html'"></div>
-    <!-- build:js scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/modernizr/modernizr.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
-    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/moment/moment.js"></script>
-    <script src="bower_components/angular-moment/angular-moment.js"></script>
-    <script src="bower_components/angular-timer/dist/angular-timer.js"></script>
-    <script src="bower_components/angular-chrono/dist/assets/angular-chrono.js"></script>
-    <script src="bower_components/angular-ui-tree/dist/angular-ui-tree.js"></script>
-    <script src="bower_components/ngDraggable/ngDraggable.js"></script>
-    <script src="bower_components/angular-audio/app/angular.audio.js"></script>
-    <script src="bower_components/angular-animate/angular-animate.js"></script>
-    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/angular-touch/angular-touch.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/sidr/jquery.sidr.min.js"></script>
-    <script src="bower_components/ngAudio/app/angular.audio.js"></script>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/sidr/stylesheets/jquery.sidr.dark.css" />
     <!-- endbower -->
     <!-- endbuild -->
+    <link rel="stylesheet" href="app/styles/main.css"/>
+    <link rel="stylesheet" href="bower_components/angular-ui-tree/dist/angular-ui-tree.min.css"/>
+</head>
+<body sidebar="" ng-class="{'sidebar-open': barIsOpen}">
+<div class="sidebar">
+    <div class="playlists">
 
-    <!-- build:js({app,.tmp}) scripts/main.js -->
-    <script src="app.concat.js"></script>
-    <!-- inject:partials -->
-    <!-- endinject -->
-    <!-- endbuild -->
+        <img src="/images/sidebar/header.png" alt=""/>
+        <ul class="nav" ng-controller="SidebarCtrl">
+            <li data-ng-repeat="taskList in taskLists">
+                {{taskList.Name}}
+            </li>
+        </ul>
+        <img src="/images/sidebar/footer.png" style="position: absolute; bottom: 0" alt=""/>
+    </div>
+</div>
+<!-- Fixed navbar -->
+<div class="header navbar navbar-inverse" role="navigation">
+    <img src="/images/sidebar/bar-open.png" class="openSidebar" ng-click="slideToggle()" alt=""/>
 
-  </body>
+    <div class="container">
+        <a class="navbar-brand" href="#">KaliTaska</a>
+
+        <div class="profile">
+            <img src="/images/mocks/profile.png"/>
+            <a href="#">Вадим Хейфец</a>
+        </div>
+    </div>
+</div>
+<div id="tracklist" class="hidden" ng-include="'components/sidebar/sidebar.html'"></div>
+<div class="content" ng-controller="PlayerCtrl" ng-include="'app/main/main.html'"></div>
+<!-- build:js scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/modernizr/modernizr.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/moment/moment.js"></script>
+<script src="bower_components/angular-moment/angular-moment.js"></script>
+<script src="bower_components/angular-timer/dist/angular-timer.js"></script>
+<script src="bower_components/angular-chrono/dist/assets/angular-chrono.js"></script>
+<script src="bower_components/angular-ui-tree/dist/angular-ui-tree.js"></script>
+<script src="bower_components/ngDraggable/ngDraggable.js"></script>
+<script src="bower_components/angular-audio/app/angular.audio.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-touch/angular-touch.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/sidr/jquery.sidr.min.js"></script>
+<script src="bower_components/ngAudio/app/angular.audio.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({app,.tmp}) scripts/main.js -->
+<script src="app.concat.js"></script>
+<!-- inject:partials -->
+<!-- endinject -->
+<!-- endbuild -->
+
+</body>
 </html>
