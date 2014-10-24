@@ -3,7 +3,7 @@
 angular.module('app').directive('sidebar', function() {
     return {
         controller: function($scope) {
-            $scope.barIsOpen = true;
+            $scope.barIsOpen = false;
 
             $scope.slideOpen = function() {
                 $scope.barIsOpen = true;
