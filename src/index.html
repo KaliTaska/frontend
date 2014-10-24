@@ -17,19 +17,14 @@
   </head>
   <body>
       <!-- Fixed navbar -->
-      <div class="navbar navbar-inverse" role="navigation">
+      <div class="header navbar navbar-inverse" role="navigation">
         <div class="container">
-           <div class="header navbar navbar-inverse" role="navigation">
-            <div class="container">
-             <a class="navbar-brand" href="#">KaliTaska</a>
-             <div class="profile">
-              <img src="/images/mocks/profile.png" />
-              <a href="#">Вадим Хейфец</a>
-            </div>
-          </div>
+         <a class="navbar-brand" href="#">KaliTaska</a>
+         <div class="profile">
+          <img src="/images/mocks/profile.png" />
+          <a href="#">Вадим Хейфец</a>
         </div>
       </div>
-    </div>
     <div id="tracklist" class="hidden" ng-controller="SidebarCtrl" ng-include="'components/sidebar/sidebar.html'"></div>
     <div class="content" ng-controller="PlayerCtrl" ng-include="'app/main/main.html'"></div>
     <!-- build:js scripts/vendor.js -->
