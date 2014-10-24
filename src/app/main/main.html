@@ -1,5 +1,4 @@
-﻿
-<div class="main container">
+﻿<div class="main container">
     <div class="row">
         <div class="col-xs-4 player">
             <div class="playlist">
@@ -12,6 +11,25 @@
                 </p>
             </div>
             <ul class="nav tracklist">
+                <li ng-class="{current: track == player.track, complite: track.IsComplite}" ng-repeat="track in playlist">
+                    <div class="clearfix">
+                        <div class="info pull-left">
+                            <h2>{{track.Name}}</h2>
+                            <ul class="desc nav clearfix">
+                                <li class="pull-left">Звпланировано: <span time-format="track.DurationSecs">{{hours ? hours + 'ч ' : ''}}{{minutes ? minutes + 'м ' : ''}}{{sseconds ? sseconds + 'с' : ''}}</span></li>
+                                <li class="pull-left sep" ng-if="track.ElapsedSec">|</li>
+                                <li class="pull-left" ng-if="track.ElapsedSec">Потрачено: <span time-format="track.ElapsedSec">{{hours ? hours + 'ч ' : ''}}{{minutes ? minutes + 'м ' : ''}}{{sseconds ? sseconds + 'с' : ''}}</span></li>
+                            </ul>
+                        </div>
+                        <div class="actions pull-right">
+                            <i class="trash"></i>
+                            <i ng-class="{'play': (track == player.track && ! player.track.isPlaying) || track != player.track, 'stop': track == player.track && player.track.isPlaying}" class=" icons"></i>
+                        </div>
+                    </div>
+                    <div class="progress-line" style="left: 10%"></div>
+                </li>
+
+
                 <li ng-class="{complite: $index  == 0 , current:($index == 1 || $index == 3)}" ng-repeat="i in [0, 1, 2, 3]">
                     <div class="clearfix">
                         <div class="info pull-left">
@@ -33,7 +51,7 @@
             <div class="estimate text-right">Осталось задач на 20ч 12м</div>
         </div>
         <div class="col-xs-8">
-            fsdsdfd
+            {{player.current ? player.current : 'кикакого нет'}}
             <a  source="#tracklist" data-sidr>Боковое меню</a>
         </div>
     </div>

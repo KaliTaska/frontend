@@ -20,8 +20,8 @@ angular.module('app')
             ];
 
             this.playlist = [
-                {"Tasks":[],"Id":1,"Name":"Be cool!","Description":"Rule it!","Start":"2014-10-11T14:58:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":false},{"Tasks":[{"Tasks":[],"Id":3,"Name":"Introduction","Description":"Intrdouctions. Short review of the concept.","Start":"2014-10-11T14:58:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":false},{"Tasks":[],"Id":4,"Name":"Say something awesome","Description":"Now say something cool to own them!","Start":"2014-10-11T15:00:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":true,"HasChildren":false},{"Tasks":[],"Id":5,"Name":"Be cool!","Description":"Just Do It!","Start":"2014-10-11T15:03:26.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":false}],"Id":2,"Name":"Start Presentation","Description":"Start Presentation on Kalitaska software","Start":"2014-10-11T14:58:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":true},{"Tasks":[],"Id":3,"Name":"Introduction","Description":"Intrdouctions. Short review of the concept.","Start":"2014-10-11T14:58:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":false},{"Tasks":[],"Id":4,"Name":"Say something awesome","Description":"Now say something cool to own them!","Start":"2014-10-11T15:00:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":true,"HasChildren":false},
-                {"Tasks":[],"Id":5,"Name":"Rule the world","Description":"Just Do It!","Start":"2014-10-11T15:03:26.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":false}];
+                {"Tasks":[],"Id":1,"Name":"Be cool!","Description":"Rule it!","Start":"2014-10-11T14:58:06.427","DurationSecs":160000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":false},{"Tasks":[{"Tasks":[],"Id":3,"Name":"Introduction","Description":"Intrdouctions. Short review of the concept.","Start":"2014-10-11T14:58:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":false},{"Tasks":[],"Id":4,"Name":"Say something awesome","Description":"Now say something cool to own them!","Start":"2014-10-11T15:00:06.427","DurationSecs":460000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":true,"HasChildren":false},{"Tasks":[],"Id":5,"Name":"Be cool!","Description":"Just Do It!","Start":"2014-10-11T15:03:26.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":false}],"Id":2,"Name":"Start Presentation","Description":"Start Presentation on Kalitaska software","Start":"2014-10-11T14:58:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":true},{"Tasks":[],"Id":3,"Name":"Introduction","Description":"Intrdouctions. Short review of the concept.","Start":"2014-10-11T14:58:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":false},{"Tasks":[],"Id":4,"Name":"Say something awesome","Description":"Now say something cool to own them!","Start":"2014-10-11T15:00:06.427","DurationSecs":60000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":true,"HasChildren":false},
+                {"Tasks":[],"Id":5,"Name":"Rule the world","Description":"Just Do It!","Start":"2014-10-11T15:03:26.427","DurationSecs":260000,"IsInPlay":false,"IsActive":false,"ShowNext":false,"ShowNotification":false,"HasChildren":false}];
         }
         angular.extend(Player.prototype, {
             index: -1,
@@ -30,6 +30,7 @@ angular.module('app')
             stop: false,
             isPlaying: false,
             percent: 0,
+            isAutoNext: false,
             startTrack: function() {
                 if(! this.isPlaying) {
 
@@ -50,8 +51,10 @@ angular.module('app')
 
                     self.stop.then(function() {
                         //var sound = ngAudio.play("assets/Demo.mp3");
-                        self.nextTrack();
-                        self.startTrack();
+                        if (isAutoNext) {
+                            self.nextTrack();
+                            self.startTrack();
+                        }
                     });
 
                     self.isPlaying = true;
