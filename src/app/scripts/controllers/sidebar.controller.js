@@ -5,14 +5,12 @@
  * Time: 7:53
  */
 'use strict';
-
 angular.module('app').controller('SidebarCtrl', ['$scope', 'taskLists', function ($scope, taskLists) {
-    angular.extend($scope, {
+    angular.extend($scope,{
         selectList : function () {
-            alert(1);
+            window.alert('aaa');
         }
     });
-
     $scope.taskLists = taskLists.taskLists;
     $scope.count = 1;
 }]);

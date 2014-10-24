@@ -9,32 +9,24 @@
       <link rel="stylesheet" href="app/styles/vendor.css">
 
       <!-- bower:css -->
+      <link rel="stylesheet" href="bower_components/sidr/stylesheets/jquery.sidr.dark.css" />
       <!-- endbower -->
       <!-- endbuild -->
     <link rel="stylesheet" href="app/styles/main.css" />
   <link rel="stylesheet" href="bower_components/angular-ui-tree/dist/angular-ui-tree.min.css" />
   </head>
-  <body sidebar="" ng-class="{'sidebar-open': barIsOpen}">
-    <ul class="nav sidebar">
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-        <li>1</li>
-    </ul>
+  <body>
       <!-- Fixed navbar -->
       <div class="header navbar navbar-inverse" role="navigation">
-          <img src="/images/sidebar/bar-open.png" class="openSidebar" ng-click="slideToggle()" alt=""/>
-
-          <div class="container">
+        <div class="container">
          <a class="navbar-brand" href="#">KaliTaska</a>
          <div class="profile">
           <img src="/images/mocks/profile.png" />
           <a href="#">Вадим Хейфец</a>
         </div>
-        </div>
-	 </div>
-    <div id="tracklist" class="hidden"  ng-include="'components/sidebar/sidebar.html'"></div>
+      </div>
+	 </div> 
+    <div id="tracklist" class="hidden" ng-controller="SidebarCtrl" ng-include="'components/sidebar/sidebar.html'"></div>
     <div class="content" ng-controller="PlayerCtrl" ng-include="'app/main/main.html'"></div>
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -56,6 +48,7 @@
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/sidr/jquery.sidr.min.js"></script>
     <script src="bower_components/ngAudio/app/angular.audio.js"></script>
     <!-- endbower -->
     <!-- endbuild -->

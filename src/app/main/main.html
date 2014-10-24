@@ -3,6 +3,7 @@
         <div class="col-xs-4 player">
             <div class="playlist">
 
+                <div source="#tracklist" class="my-lists" data-sidr></div>
                 <h1>{{playlist.Name ? playlist.Name : '&nbsp;'}}</h1>
 
                 <p class="actions clearfix">
@@ -37,10 +38,30 @@
                          class="progress-line"
                          style="left: {{player.percent}}%"></div>
                 </li>
+
+
+              <!--   <li ng-class="{complite: $index  == 0 , current:($index == 1 || $index == 3)}" ng-repeat="i in [0, 1, 2, 3]">
+                    <div class="clearfix">
+                        <div class="info pull-left">
+                            <h2>Разобрать вещи в шкафу</h2>
+                            <ul class="desc nav clearfix">
+                                <li class="pull-left">Звпланировано: 1ч 19м 30с</li>
+                                <li class="pull-left sep">|</li>
+                                <li class="pull-left">Потрачено: 23ч 14м 30с</li>
+                            </ul>
+                        </div>
+                        <div class="actions pull-right">
+                            <i class="trash"></i>
+                            <i ng-class="{'play': $index != 3, 'stop': $index == 3}" class=" icons"></i>
+                        </div>
+                    </div>
+                    <div class="progress-line" style="left: 10%"></div>
+                </li> -->
             </ul>
             <div class="estimate text-right">Осталось задач на 20ч 12м</div>
         </div>
         <div class="col-xs-8">
+             <div ng-include="'components/rightmenu/rightmenu.html'"></div>
         </div>
     </div>
 </div>
