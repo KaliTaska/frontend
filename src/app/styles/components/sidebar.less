@@ -1,0 +1,25 @@
+@sidebar-width: 480px;
+
+.sidebar {
+  position: absolute;
+  position: fixed;
+
+  width: @sidebar-width;
+  left: -@sidebar-width;
+  z-index: 999999;
+
+  .sidebar-open & {
+    left: 0;
+    right: auto;
+  }
+}
+
+.sidebar-open {
+  position: absolute;
+  left: @sidebar-width;
+}
+
+html {
+  overflow-x: hidden;
+}
+

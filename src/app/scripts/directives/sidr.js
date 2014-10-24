@@ -4,9 +4,12 @@
 angular.module('app').directive('sidr', function() {
     return {
         link: function($scope, $element, attrs) {
-            $element.sidr({
-                source: attrs.source
-            });
+
+//            var sidr = $element.sidr({
+//                source: attrs.source
+//            });
+//
+//            console.log(sidr);
         }
     }
 });
