@@ -30,16 +30,7 @@
               </div>
           </div>
       </div>
-      <div id="tracklist" class="hidden">
-          <div  class="tracklist">
-              <ul class="nav">
-                  <li>1</li>
-                  <li>2</li>
-                  <li>3</li>
-                  <li>4</li>
-              </ul>
-          </div>
-      </div>
+      <div ng-include="'components/sidebar/sidebar.html'" id="tracklist" class="hidden"></div>
     <div class="content"ng-view></div>
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
@@ -70,5 +61,6 @@
     <!-- inject:partials -->
     <!-- endinject -->
     <!-- endbuild -->
+    <script src="components/sidebar/sidebar.controller.js"></script>
   </body>
 </html>
