@@ -18,18 +18,18 @@
   <body>
       <!-- Fixed navbar -->
       <div class="navbar navbar-inverse" role="navigation">
-          <div class="container">
-              <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                  </button>
-                  <a class="navbar-brand" href="#">Project name</a>
-              </div>
+        <div class="container">
+           <div class="header navbar navbar-inverse" role="navigation">
+            <div class="container">
+             <a class="navbar-brand" href="#">KaliTaska</a>
+             <div class="profile">
+              <img src="/images/mocks/profile.png" />
+              <a href="#">Вадим Хейфец</a>
+            </div>
           </div>
+        </div>
       </div>
+    </div>
     <div id="tracklist" class="hidden" ng-controller="SidebarCtrl" ng-include="'components/sidebar/sidebar.html'"></div>
     <div class="content" ng-controller="PlayerCtrl" ng-include="'app/main/main.html'"></div>
     <!-- build:js scripts/vendor.js -->
@@ -62,7 +62,6 @@
     <!-- inject:partials -->
     <!-- endinject -->
     <!-- endbuild -->
-    <script src="app/scripts/controllers/sidebar.controller.js"></script>
     <script src="components/rightmenu/rightmenu.controller.js"></script>
     <script src="components/player/player.controller.js"></script>
   </body>
