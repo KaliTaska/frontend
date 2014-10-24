@@ -24,13 +24,15 @@
     </ul>
       <!-- Fixed navbar -->
       <div class="header navbar navbar-inverse" role="navigation">
-        <div class="container">
+          <img src="/images/sidebar/bar-open.png" class="openSidebar" ng-click="slideToggle()" alt=""/>
+
+          <div class="container">
          <a class="navbar-brand" href="#">KaliTaska</a>
          <div class="profile">
           <img src="/images/mocks/profile.png" />
           <a href="#">Вадим Хейфец</a>
         </div>
-      </div>
+        </div>
 	 </div>
     <div id="tracklist" class="hidden"  ng-include="'components/sidebar/sidebar.html'"></div>
     <div class="content" ng-controller="PlayerCtrl" ng-include="'app/main/main.html'"></div>

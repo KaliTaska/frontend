@@ -1,4 +1,4 @@
-@sidebar-width: 480px;
+@sidebar-width: 282px;
 
 .sidebar {
   position: absolute;
@@ -7,6 +7,9 @@
   width: @sidebar-width;
   left: -@sidebar-width;
   z-index: 999999;
+  height: 100%;
+  overflow: hidden;
+  background: #262626;
 
   .sidebar-open & {
     left: 0;
@@ -23,3 +26,11 @@ html {
   overflow-x: hidden;
 }
 
+
+.openSidebar {
+  position: absolute;
+  top: 100%;
+  z-index: 200;
+  left: 0;
+  margin: 1px 0 0 -1px;
+}
