@@ -3,8 +3,15 @@
     var taskLists = function(){
       var taskLists = [
       {"Tasks": [
-      {"TimeEntries": [
-      {"Id": 1, "Begin": "2014-10-23T23:56:52.4", "End": "2014-10-23T23:56:57.347", "TaskaId": 1, "IsActive": false}
+      {
+          "TimeEntries": [
+        {
+            "Id": 1,
+            "Begin": "2014-10-23T23:56:52.4",
+            "End": "2014-10-23T23:56:57.347",
+            "TaskaId": 1,
+            "IsActive": false
+        }
       ], "Id": 1, "Name": "Start Presentation", "Description": "Start presentation. Surprise everybody. Be awesome.", "EstimatedDurationSecs": 120, "DurationSecs": 125, "IsActive": true},
       {"TimeEntries": [], "Id": 2, "Name": "Introduction", "Description": "Intrdouctions. Short review of the concept of KaliTaska.", "EstimatedDurationSecs": 360, "DurationSecs": 0, "IsActive": true},
       {"TimeEntries": [], "Id": 3, "Name": "Be cool!", "Description": "Just Do It!", "EstimatedDurationSecs": 9999, "DurationSecs": 0, "IsActive": true}
