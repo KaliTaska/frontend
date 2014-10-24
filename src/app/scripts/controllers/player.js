@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('app')
-    .controller('PlayerCtrl', function ($scope, $interval, Player) {
+    .controller('PlayerCtrl', function ($scope, $interval, Player, taskLists) {
         var player = $scope.player = new Player();
         angular.extend(
             $scope,
@@ -39,7 +39,7 @@ angular.module('app')
 
         function init() {
             $scope.STATE = $scope.DEFAULT;
-            $scope.playlist = player.playlist;
+            $scope.playlist = taskLists.taskLists[taskLists.current];
 
         }
 

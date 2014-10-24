@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-xs-4 player">
             <div class="playlist">
-                <h1>Субботняя уборка</h1>
+                <h1>{{playlist.Name}}</h1>
 
                 <p class="actions clearfix">
                     <a class="pull-left">Удалить список</a>
@@ -11,7 +11,7 @@
                 </p>
             </div>
             <ul class="nav tracklist">
-                <li ng-class="{current: track == player.track, complite: track.IsComplite}" ng-repeat="track in playlist">
+                <li ng-class="{current: track == player.track, complite: track.IsComplite}" ng-repeat="track in playlist.Tasks">
                     <div class="clearfix">
                         <div class="info pull-left">
                             <h2>{{track.Name}}</h2>

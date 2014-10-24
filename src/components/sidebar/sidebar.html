@@ -1,7 +1,7 @@
-<div class="tracklist" ng-controller="SidebarCtrl">
+<div class="tracklist">
     <ul class="nav">
-        <li data-ng-repeat="taskList in tasklists">
-            {{taskList.Name}}
+        <li data-ng-repeat="taskList in taskLists">
+            <a ng-click="selectList()">{{taskList.Name}}</a>
         </li>
     </ul>
 </div>
