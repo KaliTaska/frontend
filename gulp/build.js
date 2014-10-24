@@ -28,8 +28,8 @@ gulp.task('styles', function () {
 
 gulp.task('scripts', function () {
     return gulp.src('src/{app,components}/**/*.js')
-        .pipe($.jshint())
-        .pipe($.jshint.reporter('jshint-stylish'))
+//        .pipe($.jshint())
+//        .pipe($.jshint.reporter('jshint-stylish'))
         .pipe($.concat('app.concat.js'))
         .pipe(gulp.dest('.tmp'))
         .pipe($.size());

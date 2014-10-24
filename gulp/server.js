@@ -29,7 +29,7 @@ gulp.task('serve', ['watch'], function () {
     'src/assets/images/**/*',
     'src/*.html',
     'src/{app,components}/**/*.html',
-    'src/{app,components}/**/*.js'
+    '.tmp/**/*.js'
   ]);
 });
 

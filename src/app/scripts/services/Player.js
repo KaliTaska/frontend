@@ -1,9 +1,7 @@
 'use strict';
 
 angular.module('app')
-    .factory('Player', function($interval
-        //, ngAudio
-        ) {
+    .factory('Player', function($interval, ngAudio) {
         var TICK = 1000;
         function Player() {
 
@@ -31,9 +29,21 @@ angular.module('app')
             isPlaying: false,
             percent: 0,
             isAutoNext: false,
-            startTrack: function() {
-                if(! this.isPlaying) {
+            startTrack: function(track) {
+                // Если передан трек и он не равен текузщуму,
+                if (track && this.track != track) {
+                    // Находим его иодекс и обновляем данные
+                    this.index = this.playlist.indexOf(track);
+                    if (this.index > -1) {
+                        this.track = track;
+                    }
+                    else {
+                        this.track = false;
+                    }
+                }
 
+
+                if(! this.isPlaying) {
                     var self = this;
 
                     if (! self.track) {
@@ -50,7 +60,8 @@ angular.module('app')
                     );
 
                     self.stop.then(function() {
-                        //var sound = ngAudio.play("assets/Demo.mp3");
+                        var sound = ngAudio.play("assets/beep.mp3");
+
                         self.stopTrack();
                         if (self.isAutoNext) {
                             self.nextTrack();
