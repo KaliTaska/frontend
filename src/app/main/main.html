@@ -23,10 +23,17 @@
                         </div>
                         <div class="actions pull-right">
                             <i class="trash"></i>
-                            <i ng-class="{'play': (track == player.track && ! player.track.isPlaying) || track != player.track, 'stop': track == player.track && player.track.isPlaying}" class=" icons"></i>
+                            <i class="icons play"
+                               ng-click="play(track)"
+                               ng-if="track == player.track && ! player.isPlaying || track != player.track"></i>
+                            <i class="icons stop"
+                               ng-click="stop(track)"
+                               ng-if="track == player.track && player.isPlaying"></i>
                         </div>
                     </div>
-                    <div class="progress-line" style="left: 10%"></div>
+                    <div ng-if="track == player.track"
+                         class="progress-line"
+                         style="left: {{player.percent}}%"></div>
                 </li>
 
 
