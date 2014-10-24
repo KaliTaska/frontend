@@ -5,12 +5,42 @@
     <title>Kalitaska</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="app/styles/vendor.css" />
+      <!-- build:css({.tmp,app}) styles/vendor.css -->
+      <link rel="stylesheet" href="app/styles/vendor.css">
+
+      <!-- bower:css -->
+      <link rel="stylesheet" href="bower_components/sidr/stylesheets/jquery.sidr.dark.css" />
+      <!-- endbower -->
+      <!-- endbuild -->
     <link rel="stylesheet" href="app/styles/main.css" />
   <link rel="stylesheet" href="bower_components/angular-ui-tree/dist/angular-ui-tree.min.css" />
   </head>
   <body>
-    <div ng-view></div>
+      <!-- Fixed navbar -->
+      <div class="navbar navbar-inverse" role="navigation">
+          <div class="container">
+              <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#">Project name</a>
+              </div>
+          </div>
+      </div>
+      <div id="tracklist" class="hidden">
+          <div  class="tracklist">
+              <ul class="nav">
+                  <li>1</li>
+                  <li>2</li>
+                  <li>3</li>
+                  <li>4</li>
+              </ul>
+          </div>
+      </div>
+    <div class="content"ng-view></div>
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -31,6 +61,7 @@
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/sidr/jquery.sidr.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
