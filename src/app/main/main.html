@@ -13,32 +13,40 @@
     </div>
 </div>
 <div class="main container">
-        <div class="row">
-            <div class="col-xs-4 player">
-                <div class="playlist">
-                    <h1>Субботняя уборка</h1>
-                    <p class="actions clearfix">
-                        <a class="pull-left">Удалить список</a>
-                        <a class="pull-left">Продать список</a>
-                        <a class="pull-right">+ Добавить новый таск</a>
-                    </p>
-                </div>
-                <div class="tracklist">
-                    <ul class="nav">
-                        <li ng-repeat="i in [0, 1, 2, 3]">
-                            <div>
-                                Пропылисосить
-                                <div class="desc">
-                                    Звпланировано: 19м | Потрачено: 14м 30с
-                                </div>
-                            </div>
-                        </li>
+    <div class="row">
+        <div class="col-xs-4 player">
+            <div class="playlist">
+                <h1>Субботняя уборка</h1>
 
-                    </ul>
-                </div>
+                <p class="actions clearfix">
+                    <a class="pull-left">Удалить список</a>
+                    <a class="pull-left">Продать список</a>
+                    <a class="pull-right">+ Добавить новый таск</a>
+                </p>
             </div>
-            <div class="col-xs-8">
-                Описашка
-            </div>
+            <ul class="nav tracklist">
+                <li ng-class="{complite: $index  == 0 , current:($index == 1 || $index == 3)}" ng-repeat="i in [0, 1, 2, 3]">
+                    <div class="clearfix">
+                        <div class="info pull-left">
+                            <h2>Разобрать вещи в шкафу</h2>
+                            <ul class="desc nav clearfix">
+                                <li class="pull-left">Звпланировано: 1ч 19м 30с</li>
+                                <li class="pull-left sep">|</li>
+                                <li class="pull-left">Потрачено: 23ч 14м 30с</li>
+                            </ul>
+                        </div>
+                        <div class="actions pull-right">
+                            <i class="trash"></i>
+                            <i ng-class="{'play': $index != 3, 'stop': $index == 3}" class=" icons"></i>
+                        </div>
+                    </div>
+                    <div class="progress-line" style="left: 10%"></div>
+                </li>
+            </ul>
+            <div class="estimate text-right">Осталось задач на 20ч 12м</div>
         </div>
+        <div class="col-xs-8">
+            Описашка
+        </div>
+    </div>
 </div>

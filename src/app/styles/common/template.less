@@ -2,6 +2,7 @@
 
 html {
   height: 100%;
+  color: #050505;
 }
 
 body {
@@ -23,5 +24,14 @@ body {
 
   & > .row {
     height: 100%;
+    & >
+    .col-xs-4 {
+      width: 410/1170 * 100%;
+    }
+
+    .col-xs-8 {
+      width: (1170 - 410 )/1170 * 100%;
+    }
   }
 }
+
