@@ -12,8 +12,9 @@
                 </p>
             </div>
             <ul class="nav tracklist">
-                <li ng-class="{current: track == player.track, complite: track.IsComplite}" ng-repeat="track in playlist">
+                <li ng-class="{complite: ! track.IsActive, current: track == player.track}" ng-repeat="track in playlist">
                     <div class="clearfix">
+                        <div class="toggle" ng-click="toggleActive(track)"></div>
                         <div class="info pull-left">
                             <h2>{{track.Name}}</h2>
                             <ul class="desc nav clearfix">

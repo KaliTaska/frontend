@@ -33,6 +33,11 @@ angular.module('app')
                     else {
                         $scope.selectedTrack = track;
                     }
+                },
+
+                toggleActive: function(track) {
+                    track.IsActive = ! track.IsActive;
+                    console.log(track.IsActive);
                 }
             }
         );
