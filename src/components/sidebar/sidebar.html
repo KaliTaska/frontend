@@ -1,5 +1,5 @@
 <div class="tracklist">
-    <ul class="nav">
+    <ul class="nav" ng-controller="SidebarCtrl">
         <li data-ng-repeat="taskList in taskLists">
             <a ng-click="selectList()">{{taskList.Name}}</a>
         </li>
