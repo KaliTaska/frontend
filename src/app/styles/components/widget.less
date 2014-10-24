@@ -1,0 +1,86 @@
+@widgetImagesPath: '/images/widget';
+@timerSize: 100px;
+@controlSize: 40px;
+
+.player-widget {
+	box-sizing: border-box;
+	display: inline-block;
+	width: 100%;
+	padding-left: (@timerSize * 1.6);
+	height: (@timerSize + 40px);
+}
+
+.player-widget::before {
+	display: inline-block;
+	position: absolute;
+	top: 20px;
+	left: (@timerSize * 0.3);
+	content: '';
+	width: @timerSize;
+	height: @timerSize;
+	background: url("@{widgetImagesPath}/timer.png") no-repeat;
+}
+
+.player-widget {
+	h3 {
+		font-size: 28px;
+		color: rgb(52, 52, 52);
+		margin-top: 12px;
+		margin-bottom: 4px;
+	}
+
+	.progress-bar-container {
+		display: inline-block;
+		width: 90%;
+		height: 6px;
+		border-radius: 2px;
+		box-shadow: 2px -3px 3px rgba(0, 0, 0, 0.2);
+		margin: auto;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.progress-bar-container > .progress-line {
+		background: rgb(74, 144, 226);
+		height: 2px;
+		outline: 2px solid rgb(153, 217, 234);
+		position: absolute;
+		right: 0;
+	}
+	
+	.controls {
+		width:((@controlSize * 3) + 60px);
+		height: (@controlSize + 20px);
+		margin: auto;
+	}
+	
+	.controls {
+		.control {
+			margin-top: 10px;
+			display: inline-block;
+			width: @controlSize;
+			height: @controlSize;
+			margin-left: 25px;
+			cursor: pointer;
+		}
+		.control:first-child {
+			margin-left: 0;
+		}
+		
+		.back {
+			background: url("@{widgetImagesPath}/back.png") no-repeat;
+		}
+		
+		.pause {
+			background: url("@{widgetImagesPath}/pause.png") no-repeat;
+		}
+		
+		.play {
+			background: url("@{widgetImagesPath}/play.png") no-repeat;
+		}
+		
+		.forward {
+			background: url("@{widgetImagesPath}/forward.png") no-repeat;
+		}
+	}
+}
