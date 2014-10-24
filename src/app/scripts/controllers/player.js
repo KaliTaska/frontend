@@ -22,6 +22,7 @@ angular.module('app')
                 },
                 play: function(track) {
                     player.startTrack(track);
+                    $scope.selectedTrack = track;
                 },
                 stop: function() {
                     player.stopTrack();
