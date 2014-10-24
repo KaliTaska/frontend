@@ -1,0 +1,45 @@
+@brandImagePath: '/images/';
+@mainColor: rgb(23, 23, 23);
+@fontColor: rgb(225, 230, 235);
+@linkColor: rgb(71, 143, 228);
+@iconSize: 40px;
+
+.header {
+	border-radius: 0;
+	background: @mainColor;
+}
+
+.header .profile {
+	line-height: 55px;
+	float: right;
+	padding-right: 50px;
+}
+
+.header .profile img {
+	padding: 8px;
+}
+
+.header .profile a {
+	text-decoration: underline;
+}
+
+.header .navbar-brand {
+	font-size: 30px;
+	font-weight: bold;
+	color: @fontColor;
+	padding-top: 19px;
+	padding-left: (2 * @iconSize);
+}
+
+.header .navbar-brand:before {
+	display: inline-block;
+	position: absolute;
+	top: 10px;
+	left: (@iconSize * 0.7);
+	content: '';
+	width: @iconSize;
+	height: @iconSize;
+	background: url("@{brandImagePath}/brand.png") no-repeat;
+}
+
+
