@@ -40,6 +40,7 @@ angular.module('app')
         function init() {
             $scope.STATE = $scope.DEFAULT;
             $scope.playlist = player.playlist = taskLists.taskLists[taskLists.current].Tasks;
+            player.playlist.Name = taskLists.taskLists[taskLists.current].Name;
         }
 
         init();

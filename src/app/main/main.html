@@ -2,7 +2,8 @@
     <div class="row">
         <div class="col-xs-4 player">
             <div class="playlist">
-                <h1>{{playlist.Name}}</h1>
+
+                <h1>{{playlist.Name ? playlist.Name : '&nbsp;'}}</h1>
 
                 <p class="actions clearfix">
                     <a class="pull-left">Удалить список</a>
